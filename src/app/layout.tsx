@@ -1,16 +1,27 @@
+import type { Metadata } from "next";
 import { Inter, Lora } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/Navbar";
 
-// Modern Sans for UI
 const sans = Inter({ subsets: ["latin"], variable: "--font-sans" });
-// Elegant Serif for headings (the "Book" look)
 const serif = Lora({ subsets: ["latin"], variable: "--font-serif" });
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export const metadata: Metadata = {
+  title: "Mahsa Barzegarsakhvidi | Portfolio",
+  description: "Computer Science student at York University",
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
     <html lang="en" className={`${sans.variable} ${serif.variable}`}>
-      <body className="bg-background text-foreground font-sans antialiased">
-        <main className="max-w-4xl mx-auto px-6 py-12">
+      <body className="bg-background text-foreground font-sans antialiased min-h-screen">
+        {/* The container that centers your "Book" layout */}
+        <main className="max-w-3xl mx-auto px-8 py-10">
+          <Navbar />
           {children}
         </main>
       </body>
